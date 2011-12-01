@@ -8,7 +8,7 @@ var V = function (x, y) {
 		}
 	, add: function (a, mod) {
 			if(mod === undefined) mod = 1
-			return V((x + a.x) * mod), (y + a.y) * mod)
+			return V((x + a.x) * mod, (y + a.y) * mod)
 		}
 	, sub: function (s, mod) {
 			if(mod === undefined) mod = 1
