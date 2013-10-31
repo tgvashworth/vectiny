@@ -1,21 +1,22 @@
-# Vectiny
+# vectiny
 
-A tiny Javascript 2D Vector Class
-
-All suggestions very welcome.
+very tiny 2D vectors.
 
 ```javascript
-// Create three new vectors and a scalar
-var loc, vel, grav, speed;
-
-loc = V(100,100);
-vel = V(15,12);
-grav = V(0,-9.2);
+var loc = V(100,100);
+var vel = V(15,12);
+var grav = V(0,-9.2);
 
 // Add them
-vel.add(grav);
-loc.add(vel);
+vel = vel.add(grav);
+loc = loc.add(vel);
 
 // Find the magnitude
-speed = vel.magnitude();
+var speed = vel.magnitude();
 ```
+
+Methods include: `add`, `sub`, `mult`, `unit`, `limit`, `mag`, `to` and `from`.
+
+## License
+
+MIT

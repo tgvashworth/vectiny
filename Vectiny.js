@@ -1,30 +1,38 @@
-// Very tiny Javscript 2D Vector class
-var V = function (x, y) {
-    return {
-        x: x,
-        y: y,
+/**
+ * vectiny: very tiny 2D vectors.
+ *
+ * Examples
+ *
+ *   var loc = V(10, 10);
+ *   var vel = V(1, 2);
+ *
+ *   loc.add(vel);
+ */
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define(factory);
+    } else if (typeof exports === 'object') {
+        module.exports = factory();
+    } else {
+        root.V = factory();
+  }
+}(this, function () {
+
+    var Vector = {
         add: function (a, mod) {
-            if (mod === undefined) mod = 1;
-            this.x = (this.x + a.x) * mod;
-            this.y = (this.y + a.y) * mod;
-            return this;
+            if (typeof mod === 'undefined') mod = 1;
+            return V((this.x + a.x) * mod, (this.y + a.y) * mod);
         },
         sub: function (s, mod) {
-            if(mod === undefined) mod = 1;
-            this.x = (this.x - s.x) * mod;
-            this.y = (this.y - s.y) * mod;
-            return this;
+            if(typeof mod === 'undefined') mod = 1;
+            return V((this.x - s.x) * mod, (this.y - s.y) * mod);
         },
         mult: function (m) {
-            this.x = this.x * m;
-            this.y = this.y * m;
-            return this
+            return V(this.x * m, this.y * m);
         },
         unit: function () {
             var mag = this.magnitude();
-            this.x = this.x / mag;
-            this.y = this.y / mag;
-            return this;
+            return V(this.x / mag, this.y / mag);
         },
         limit: function (max) {
             return (this.magnitude() > max ? this.unit().mult(max) : this);
@@ -32,11 +40,34 @@ var V = function (x, y) {
         magnitude: function () {
             return Math.sqrt((this.x * this.x) + (this.y * this.y));
         },
+        mag: function () {
+            return this.magnitude();
+        },
         to: function (b) {
             return Math.sqrt(Math.pow(b.x - this.x, 2) + Math.pow(b.y - this.y, 2));
         },
+        from: function (b) {
+            return b.to(this);
+        },
         toString: function () {
-            return "x: " + this.x + ", y: " + this.y;
+            return JSON.stringify([this.x, this.y]);
+        },
+        valueOf: function () {
+            return this.magnitude();
         }
     };
-};
+
+    function V(x, y) {
+        if (typeof x === 'undefined' ||
+            typeof y === 'undefined') throw new Error('V requires both x and y.');
+
+        var vector = Object.create(Vector);
+        vector.x = x;
+        vector.y = y;
+
+        return vector;
+    }
+
+    return V;
+}));
+
