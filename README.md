@@ -6,16 +6,16 @@ All suggestions very welcome.
 
 ```javascript
 // Create three new vectors and a scalar
-var location, velocity, gravity, speed
+var loc, vel, grav, speed;
 
-location = V(100,100)
-velocity = V(15,12)
-gravity = V(0,-9.2)
-    
+loc = V(100,100);
+vel = V(15,12);
+grav = V(0,-9.2);
+
 // Add them
-velocity.add(gravity)
-location.add(velocity)
-    
+vel.add(grav);
+loc.add(vel);
+
 // Find the magnitude
-speed = velocity.mag()
+speed = vel.magnitude();
 ```
