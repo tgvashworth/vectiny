@@ -2,6 +2,8 @@
 
 very tiny 2D vectors.
 
+`npm install vectiny` or include `vectiny.js` in your page.
+
 ```javascript
 var loc = V(100,100);
 var vel = V(15,12);
