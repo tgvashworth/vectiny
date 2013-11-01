@@ -1,6 +1,6 @@
 {
   "name": "vectiny",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "very tiny 2D vectors",
   "main": "vectiny.js",
   "scripts": {
