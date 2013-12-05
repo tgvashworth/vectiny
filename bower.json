@@ -1,0 +1,14 @@
+{
+  "name": "vectiny",
+  "description": "very tiny 2D vectors.",
+  "version": "0.0.2",
+  "main": "vectiny.js",
+  "ignore": [
+    "test",
+    "package.json"
+  ],
+  "keywords": [
+    "vector",
+    "math"
+  ]
+}
